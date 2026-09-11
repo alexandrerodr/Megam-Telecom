@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="Verifique os planos disponíveis na sua região - Megam Telecom." />
+    <title>Cobertura | Megam Telecom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="page-hero">
+        <div class="hero-bg" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span><span class="grid-overlay"></span></div>
+        <div class="container page-hero-inner">
+          <span class="eyebrow">Cobertura</span>
+          <h1>Verifique os planos disponíveis na sua região</h1>
+          <p>Informe sua localização por coordenadas ou clique no mapa. Verificamos se o endereço está dentro da nossa área de atendimento.</p>
+          <nav class="breadcrumb" aria-label="Trilha"><a href="index.html">Início</a><span>/</span><span>Cobertura</span></nav>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:1rem">
+        <div class="container coverage-wrap">
+          <aside class="map-panel reveal">
+            <h3>Sua localização</h3>
+            <div class="field"><label for="coords">Coordenadas (lat, lng)</label><input id="coords" type="text" placeholder="-23.641144, -47.827518" /></div>
+            <button id="useGps" class="btn btn-ghost btn-block">Usar minha localização (GPS)</button>
+            <button id="checkBtn" class="btn btn-primary btn-block">Verificar disponibilidade</button>
+            <div class="cov-status idle" id="covStatus">Informe sua localização para verificar.</div>
+          </aside>
+          <div class="map-box reveal"><div id="mapCobertura"></div></div>
+        </div>
+        <div class="container">
+          <div class="cov-result" id="covResult" hidden></div>
+        </div>
+      </section>
+
+      <!-- <section class="section admin-section" id="admin-area" style="padding-top:0">
+        <div class="container">
+          <div class="admin-gate" id="adminGate">
+            <div class="gate-card">
+              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <h2>Área de administração</h2><p>Entre para editar regiões e planos de cobertura.</p>
+              <div class="gate-input-row"><input id="passwordInput" type="password" placeholder="Senha" autocomplete="off" /><button id="unlockBtn" class="btn btn-primary">Entrar</button></div>
+              <p class="gate-error" id="gateError" hidden></p>
+            </div>
+          </div>
+
+          <div id="adminContent" hidden>
+            <div class="admin-toolbar reveal">
+              <button id="newRegionBtn" class="btn btn-primary">Nova região</button>
+              <button id="finishRegionBtn" class="btn btn-primary" disabled>Concluir desenho</button>
+              <button id="cancelRegionBtn" class="btn btn-ghost" disabled>Cancelar</button>
+              <button id="stopEditBtn" class="btn btn-ghost" disabled>Concluir edição</button>
+              <button id="removePointBtn" class="btn btn-ghost" disabled>Remover ponto selecionado</button>
+              <button id="undoPointBtn" class="btn btn-ghost" disabled>Desfazer ponto</button>
+              <button id="clearPointsBtn" class="btn btn-ghost" disabled>Limpar pontos</button>
+              <span class="admin-hint" id="adminHint">Selecione uma região no mapa ou na lista para editar seus pontos.</span>
+            </div>
+            <div class="admin-legend"><span><i class="legend-handle"></i> arraste o ponto</span><span><i class="legend-plus">+</i> insira ponto</span><span><i class="legend-move"></i> mova a área</span><span>clique no ponto e use “Remover”</span></div>
+
+            <div class="admin-wrap">
+              <div class="map-box admin-map-box"><div id="mapAdmin"></div></div>
+              <aside class="admin-side">
+                <h3>Regiões cadastradas</h3>
+                <div class="region-list" id="regionList"></div>
+                <div class="region-form" id="regionForm" hidden>
+                  <h3>Região selecionada</h3>
+                  <div class="field"><label for="regionNameInput">Nome</label><input id="regionNameInput" type="text" /></div>
+                  <button id="saveRegionBtn" class="btn btn-primary btn-block">Salvar nome</button>
+                  <button id="deleteRegionBtn" class="btn btn-danger btn-block">Excluir região</button>
+                </div>
+                <hr />
+                <h3>Planos da região</h3><div class="plan-checks" id="planChecks"></div>
+              </aside>
+            </div>
+
+            <div class="plan-manager">
+              <div class="manager-head"><div><span class="eyebrow">Catálogo</span><h2>Gerenciar planos</h2></div><button id="newPlanBtn" class="btn btn-primary">Adicionar plano</button></div>
+              <div class="plan-manager-grid"><div class="plan-admin-list" id="planAdminList"></div><form class="plan-editor" id="planEditor" hidden>
+                <h3 id="planEditorTitle">Novo plano</h3>
+                <div class="form-grid"><div class="field"><label for="planName">Nome</label><input id="planName" required /></div><div class="field"><label for="planSpeed">Velocidade</label><input id="planSpeed" placeholder="700" required /></div><div class="field"><label for="planUnit">Unidade</label><select id="planUnit"><option>Mb</option><option>Gb</option></select></div><div class="field"><label for="planPrice">Valor mensal</label><input id="planPrice" placeholder="99,90" required /></div><div class="field"><label for="planType">Tipo</label><select id="planType"><option value="internet">Internet</option><option value="combo">Combo</option></select></div><div class="field"><label for="planTag">Etiqueta</label><input id="planTag" placeholder="Internet" /></div></div>
+                <div class="field"><label for="planDescription">Descrição</label><textarea id="planDescription" rows="3" placeholder="Explique o que o plano oferece"></textarea></div>
+                <div class="field"><label for="planFeatures">Itens incluídos</label><textarea id="planFeatures" rows="4" placeholder="Um item por linha"></textarea></div>
+                <div class="field"><label for="planLink">Link do botão</label><input id="planLink" type="url" placeholder="https://... ou contato.html" /></div>
+                <label class="plan-featured"><input id="planFeatured" type="checkbox" /> Destacar como mais vendido</label>
+                <div class="editor-actions"><button type="submit" class="btn btn-primary">Salvar plano</button><button type="button" id="cancelPlanBtn" class="btn btn-ghost">Cancelar</button></div>
+              </form></div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script type="module" src="assets/js/cobertura.js"></script>
+  </body>
+</html>

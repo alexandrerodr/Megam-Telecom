@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Planos de internet fibra e combos com TV e apps da Megam Telecom." />
+  <title>Planos | Megam Telecom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <main class="page">
+    <section class="page-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="grid-overlay"></span>
+      </div>
+      <div class="container page-hero-inner">
+        <span class="eyebrow">Planos</span>
+        <h1>Escolha seu plano ideal</h1>
+        <p>Internet fibra de verdade. Combine com TV e apps e monte o combo perfeito pra sua casa.</p>
+        <nav class="breadcrumb" aria-label="Trilha"><a href="index.html">Início</a><span>/</span><span>Planos</span>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:1rem">
+      <div class="plan-filters reveal" id="planFilters" role="tablist" aria-label="Tipo de plano">
+        <button class="chip is-active" data-filter="internet" role="tab" aria-selected="true">internet + apps</button>
+        <button class="chip" data-filter="combo" role="tab" aria-selected="false">Internet + TV e Cinema</button>
+        <button class="chip" data-filter="esportes" role="tab" aria-selected="false">Internet + TV e Esportes</button>
+        <button class="chip" data-filter="all" role="tab" aria-selected="false">Todos</button>
+      </div>
+      <div class="plans-grid" id="plansGrid"></div>
+      <p class="plans-note reveal">Todos os planos incluem instalação grátis e roteador de última geração.</p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="assets/js/planos.js"></script>
+</body>
+
+</html>

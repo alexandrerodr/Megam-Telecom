@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fale com a Megam Telecom - tire dúvidas, peça suporte ou contrate seu plano." />
+  <title>Fale Conosco | Megam Telecom</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="page-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="grid-overlay"></span>
+      </div>
+
+      <div class="container page-hero-inner">
+        <span class="eyebrow">Fale Conosco</span>
+        <h1>Vamos conversar</h1>
+        <p>
+          Tire dúvidas, peça suporte ou fale com um consultor.
+          Estamos prontos pra ajudar.
+        </p>
+
+        <nav class="breadcrumb" aria-label="Trilha">
+          <a href="index.html">Início</a>
+          <span>/</span>
+          <span>Fale Conosco</span>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:1rem">
+      <div class="container contact-inner">
+
+        <div class="contact-info reveal">
+          <h2>Canais de atendimento</h2>
+          <p>Escolha o melhor canal pra você. Respondemos rápido.</p>
+
+          <ul class="contact-list">
+            <li>
+              <span class="ci-icon">📞</span>
+              <div>
+                <strong>(15) 3276-1822</strong>
+                <span>Seg a sáb, 8h às 22h</span>
+              </div>
+            </li>
+
+            <li>
+              <span class="ci-icon">💬</span>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>(15) 3276-1822</span>
+              </div>
+            </li>
+
+            <li>
+              <span class="ci-icon">📍</span>
+              <div>
+                <strong>Loja física</strong>
+                <span>
+                  R. Leôncio Pinheiro, 212 - Perímetro Urbano,
+                  Sarapuí - SP, 18225-000, Brasil
+                </span>
+              </div>
+            </li>
+
+            <li>
+              <span class="ci-icon">✉️</span>
+              <div>
+                <strong>E-mail</strong>
+                <span>atendimento@megamtelecom.com.br</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/gxstore0211@gmail.com"
+  method="POST">
+
+  <!-- CONFIGURAÇÕES DO FORMSUBMIT -->
+
+  <input type="hidden" name="_subject" value="Novo contato pelo site - Megam Telecom" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+
+  <!-- NOME -->
+  <div class="field">
+    <label for="nome">Nome</label>
+    <input id="nome" name="nome" type="text" required placeholder="Seu nome completo" />
+  </div>
+
+  <!-- TELEFONE -->
+  <div class="field">
+    <label for="telefone">Telefone</label>
+    <input id="telefone" name="telefone" type="tel" required placeholder="(11) 99999-0000" />
+  </div>
+
+  <!-- ASSUNTO -->
+  <div class="field">
+    <label for="assunto">Assunto</label>
+    <select id="assunto" name="assunto" required>
+      <option value="" disabled selected>Selecione</option>
+      <option value="Contratar plano">Contratar plano</option>
+      <option value="Suporte técnico">Suporte técnico</option>
+      <option value="2ª via de boleto">2ª via de boleto</option>
+      <option value="Outros">Outros</option>
+    </select>
+  </div>
+
+  <!-- MENSAGEM -->
+  <div class="field">
+    <label for="mensagem">Mensagem</label>
+    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Digite aqui"></textarea>
+  </div>
+
+  <!-- BOTÃO -->
+  <button type="submit" class="btn btn-primary btn-block" id="submitButton">
+    <span class="button-text">Enviar mensagem</span>
+
+    <span class="button-loading" hidden>
+      <span class="loading-spinner"></span>
+      Enviando...
+    </span>
+  </button>
+
+  <!-- FEEDBACK -->
+  <div class="form-feedback" id="formFeedback" role="status" aria-live="polite" hidden></div>
+
+</form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="assets/js/contato.js"></script>
+</body>
+
+</html>
