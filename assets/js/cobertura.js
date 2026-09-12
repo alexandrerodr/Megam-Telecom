@@ -1,4 +1,4 @@
-import { injectShell, $, $$ } from './layout.js'
+import { injectShell, $, $$, initReveal } from './layout.js'
 import { store, ADMIN_PASSWORD } from './store.js'
 import { WHATSAPP_NUMBER } from './layout.js'
 const L = window.L
@@ -23,6 +23,14 @@ const OSM_TILE_OPTIONS = {
 const mapEl = $('#mapCobertura')
 const map = L.map(mapEl, { zoomControl: true }).setView([SARAPUI_LAT, SARAPUI_LNG], 14)
 L.tileLayer(OSM_TILE_URL, OSM_TILE_OPTIONS).addTo(map)
+
+/* Ícone personalizado da Megam */
+const megamMarkerIcon = L.icon({
+  iconUrl: 'assets/img/ponto.png',
+  iconSize: [65, 65],
+  iconAnchor: [37, 65],
+  popupAnchor: [0, -65]
+})
 
 const coordsInput = $('#coords'), checkBtn = $('#checkBtn'), useGps = $('#useGps')
 const covStatus = $('#covStatus'), covResult = $('#covResult')
@@ -56,7 +64,14 @@ function scrollToResult() {
 
 function placeMarker(lat, lng) {
   if (marker) map.removeLayer(marker)
-  marker = L.marker([lat, lng]).addTo(map).bindPopup('Sua localização').openPopup()
+
+  marker = L.marker([lat, lng], {
+    icon: megamMarkerIcon
+  })
+    .addTo(map)
+    .bindPopup('Sua localização')
+    .openPopup()
+
   map.setView([lat, lng], 15)
 }
 
@@ -134,28 +149,70 @@ checkBtn.addEventListener('click', async () => {
     return
   }
   covResult.hidden = false
-  covResult.innerHTML = `<h4>Planos disponíveis para sua região:</h4><div class="plans-grid" id="regionPlans"></div>`
+  currentRegionPlans = planRows
+  covResult.innerHTML = `
+    <h4>Planos disponíveis para sua região:</h4>
+    <div class="plan-filters reveal" id="covPlanFilters" role="tablist" aria-label="Tipo de plano">
+      <button class="chip" data-filter="internet" role="tab" aria-selected="false">internet + apps</button>
+      <button class="chip" data-filter="combo" role="tab" aria-selected="false">Internet + TV e Cinema</button>
+      <button class="chip" data-filter="esportes" role="tab" aria-selected="false">Internet + TV e Esportes</button>
+      <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+    </div>
+    <div class="plans-grid" id="regionPlans"></div>
+  `
+  renderRegionPlans('all')
+  initReveal()
+  scrollToResult()
+})
+
+/* ============================ FILTRO DE PLANOS DA REGIÃO ============================ */
+let currentRegionPlans = []
+
+function renderRegionPlans(filter) {
   const grid = $('#regionPlans')
-  planRows.forEach((p, i) => {
-    const card = document.createElement('article')
-    card.className = `plan-card ${p.featured ? 'featured' : ''}`
-    card.style.animation = `cardIn .5s ${i * .08}s var(--ease) both`
+  if (!grid) return
+  const list = filter === 'all' ? currentRegionPlans : currentRegionPlans.filter(p => p.type === filter)
+
+  if (!list.length) {
+    grid.innerHTML = '<p class="admin-hint">Nenhum plano deste tipo disponível para sua região.</p>'
+    return
+  }
+
+  grid.innerHTML = list.map(p => {
     const link = p.link || 'contato.html'
     const featuresHtml = (p.features || []).map(f => `<li>${f}</li>`).join('')
     const descHtml = p.description ? `<p class="plan-desc">${p.description}</p>` : ''
-    card.innerHTML = `
-      ${p.featured ? '<span class="plan-badge">Mais vendido</span>' : ''}
-      <span class="plan-tag">${p.tag || p.type}</span>
-      <div class="plan-speed">${p.speed}<small> ${p.unit}</small></div>
-      <div class="plan-name">${p.name}</div>
-      ${descHtml}
-      <div class="plan-price">R$ <strong>${p.price}</strong><span>/mês</span></div>
-      <ul class="plan-features">${featuresHtml}</ul>
-      <a href="${link}" class="btn ${p.featured ? 'btn-primary' : 'btn-ghost'}">Assinar plano</a>
+    return `
+      <article class="plan-card ${p.featured ? 'featured' : ''}">
+        ${p.featured ? '<span class="plan-badge">Mais vendido</span>' : ''}
+        <span class="plan-tag">${p.tag || p.type}</span>
+        <div class="plan-speed">${p.speed}<small> ${p.unit}</small></div>
+        <div class="plan-name">${p.name}</div>
+        ${descHtml}
+        <div class="plan-price">R$ <strong>${p.price}</strong><span>/mês</span></div>
+        <ul class="plan-features">${featuresHtml}</ul>
+        <a href="${link}" class="btn ${p.featured ? 'btn-primary' : 'btn-ghost'}">Assinar plano</a>
+      </article>
     `
-    grid.appendChild(card)
+  }).join('')
+
+  grid.querySelectorAll('.plan-card').forEach((card, i) => {
+    card.style.animation = `cardIn .5s ${i * .08}s var(--ease) both`
   })
-  scrollToResult()
+}
+
+// Delegação de clique: o menu de filtros é recriado a cada consulta,
+// então o listener fica no container fixo (#covResult) em vez do menu em si.
+covResult.addEventListener('click', (e) => {
+  const btn = e.target.closest('#covPlanFilters .chip')
+  if (!btn) return
+  $$('#covPlanFilters .chip').forEach(c => {
+    c.classList.remove('is-active')
+    c.setAttribute('aria-selected', 'false')
+  })
+  btn.classList.add('is-active')
+  btn.setAttribute('aria-selected', 'true')
+  renderRegionPlans(btn.dataset.filter)
 })
 
 /* ============================ ADMIN GATE ============================ */

@@ -46,17 +46,58 @@
     </div>
 
     <div class="speed-widget reveal">
-      <iframe
-        src="https://fast.com/pt/"
-        title="Teste de velocidade da internet"
-        width="100%"
-        height="450"
-        frameborder="0"
-        scrolling="no"
-        allow="fullscreen"
-        style="border:0; border-radius:16px;"
-      ></iframe>
+  <div class="speed-start" id="speedStart">
+    <div class="speed-icon">
+      ⚡
     </div>
+
+    <h3>Teste sua velocidade</h3>
+
+    <p>
+      Clique no botão abaixo para iniciar o teste de velocidade
+      da sua internet.
+    </p>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="startSpeedTest"
+    >
+      Iniciar teste de velocidade
+    </button>
+  </div>
+
+  <div id="speedFrame" hidden></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const startButton = document.getElementById("startSpeedTest");
+    const speedStart = document.getElementById("speedStart");
+    const speedFrame = document.getElementById("speedFrame");
+
+    if (!startButton || !speedStart || !speedFrame) return;
+
+    startButton.addEventListener("click", function () {
+      speedStart.hidden = true;
+
+      speedFrame.hidden = false;
+
+      speedFrame.innerHTML = `
+        <iframe
+          src="https://fast.com/pt/"
+          title="Teste de velocidade da internet"
+          width="100%"
+          height="450"
+          frameborder="0"
+          scrolling="no"
+          allow="fullscreen"
+          style="border:0; border-radius:16px;"
+        ></iframe>
+      `;
+    });
+  });
+</script>
 
   </div>
 </section>
