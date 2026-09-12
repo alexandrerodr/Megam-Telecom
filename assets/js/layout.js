@@ -104,61 +104,267 @@ export function injectShell(activeHref) {
 
   document.body.insertAdjacentHTML('beforeend', `
     <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/img/logo.png" alt="Megam Telecom" class="brand-logo footer-logo" />
-          <p class="footer-legal"><strong>Razão Social:</strong> Meganet Sarapuí Telecom Ltda</p>
-          <p class="footer-legal"><strong>CNPJ:</strong> 22.372.159/0001-70</p>
-          <a class="footer-legal" href="/assets/contrato-de-Prestacao-de-servico.pdf" target="_blank" rel="noopener noreferrer">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <img
+        src="assets/img/logo.png"
+        alt="Megam Telecom"
+        class="brand-logo footer-logo"
+      />
+
+      <p class="footer-legal">
+        <strong>Razão Social:</strong> Meganet Sarapuí Telecom Ltda
+      </p>
+
+      <p class="footer-legal">
+        <strong>CNPJ:</strong> 22.372.159/0001-70
+      </p>
+
+      <a class="footer-legal" href="/assets/contrato-de-Prestacao-de-servico.pdf" target="_blank" rel="noopener noreferrer">
     Contrato de Prestação de Serviços
 </a>
-        </div>
-        <div class="footer-column">
-          <h3>Institucional</h3>
-          <nav class="footer-nav" aria-label="Institucional">
-            <a href="index.html">Início</a>
-            <a href="contato.html">Empresa</a>
-            <a href="premios.html">Show de Prêmios</a>
-            <a href="planos.html">Planos</a>
-            <a href="contato.html">Contato</a>
-            <a href="contato.html">Trabalhe Conosco</a>
-          </nav>
-        </div>
-        <div class="footer-column footer-contact">
-          <h3>Fale Conosco</h3>
-          <a href="mailto:atendimento@megamtelecom.com.br" class="footer-contact-line">
-            <span class="footer-icon" aria-hidden="true">✉</span>
-            <span>atendimento@megamtelecom<br />.com.br</span>
-          </a>
-          <a href="tel:+551532761822" class="footer-contact-line">
-            <span class="footer-icon" aria-hidden="true">▣</span>
-            <span>(15) 3276-1822</span>
-          </a>
-          <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" rel="noopener" class="footer-contact-line">
-            <span class="footer-icon" aria-hidden="true">◔</span>
-            <span>(15) 99689-0858</span>
-          </a>
-          <div class="footer-contact-line footer-address">
-            <span class="footer-icon" aria-hidden="true">●</span>
-            <span>R. Dr Leôncio Pinheiro, 212 - Centro - Sarapuí-SP 18225-000</span>
-          </div>
-        </div>
-        <div class="footer-column footer-hours">
-          <h3>Horários de<br />Atendimento</h3>
-          <p><span class="footer-icon" aria-hidden="true">◷</span><span>Segunda a Sexta 08:00<br />até 22:00</span></p>
-          <p><span class="footer-icon" aria-hidden="true">◷</span><span>Sábado 09:00 às 18:00</span></p>
-          <p><span class="footer-icon" aria-hidden="true">◷</span><span>Domingos e feriados<br />09:00 às 13:00</span></p>
-          <div class="footer-socials" aria-label="Redes sociais">
-            <span aria-label="Instagram">◎</span>
-            <span aria-label="Facebook">f</span>
-            <span aria-label="YouTube">▶</span>
-          </div>
-        </div>
+    </div>
+
+
+    <div class="footer-column">
+      <h3>Institucional</h3>
+
+      <nav class="footer-nav" aria-label="Institucional">
+        <a href="index.html">Início</a>
+        <a href="contato.html">Empresa</a>
+        <a href="premios.html">Show de Prêmios</a>
+        <a href="planos.html">Planos</a>
+        <a href="contato.html">Contato</a>
+        <a href="contato.html">Trabalhe Conosco</a>
+      </nav>
+    </div>
+
+
+    <div class="footer-column footer-contact">
+      <h3>Fale Conosco</h3>
+
+      <a
+        href="mailto:atendimento@megamtelecom.com.br"
+        class="footer-contact-line"
+      >
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+        </span>
+
+        <span>
+          atendimento@megamtelecom<br />
+          .com.br
+        </span>
+      </a>
+
+
+      <a
+        href="tel:+551532761822"
+        class="footer-contact-line"
+      >
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                     19.79 19.79 0 0 1-8.63-3.07
+                     19.5 19.5 0 0 1-6-6
+                     19.79 19.79 0 0 1-3.07-8.67
+                     A2 2 0 0 1 4.11 2h3
+                     a2 2 0 0 1 2 1.72
+                     12.84 12.84 0 0 0 .7 2.81
+                     2 2 0 0 1-.45 2.11L8.09 9.91
+                     a16 16 0 0 0 6 6l1.27-1.27
+                     a2 2 0 0 1 2.11-.45
+                     12.84 12.84 0 0 0 2.81.7
+                     A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+        </span>
+
+        <span>(15) 3276-1822</span>
+      </a>
+
+
+      <a
+        href="https://wa.me/5515996890858"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-contact-line"
+      >
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-9 8.5
+                     8.5 8.5 0 0 1-4.2-1.1L3 20
+                     l1.2-4.5A8.4 8.4 0 1 1 21 11.5Z">
+            </path>
+
+            <path d="M8.5 9.5c.2 1.1 1.5 2.7 2.6 3.3
+                     1.1.6 1.8.7 2.1.4l.8-.9
+                     c.2-.2.4-.2.7 0l1.3.7
+                     c.3.2.4.5.2.8-.4.8-1.2 1.4-2.2 1.4
+                     -1.4 0-3.5-1-5-2.5
+                     s-2.5-3.6-2.5-5
+                     c0-1 .6-1.8 1.4-2.2
+                     .3-.2.6-.1.8.2l.7 1.3
+                     c.2.3.2.5 0 .7l-.9.8Z">
+            </path>
+          </svg>
+        </span>
+
+        <span>(15) 99689-0858</span>
+      </a>
+
+
+      <div class="footer-contact-line footer-address">
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 5-8 11-8 11S4 15 4 10
+                     a8 8 0 1 1 16 0Z">
+            </path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </span>
+
+        <span>
+          R. Dr Leôncio Pinheiro, 212 - Centro -
+          Sarapuí-SP 18225-000
+        </span>
       </div>
-      <div class="container footer-bottom">
-        <p>© <span id="year"></span> Megam Telecom. Todos os direitos reservados.</p>
+    </div>
+
+
+    <div class="footer-column footer-hours">
+      <h3>
+        Horários de<br />
+        Atendimento
+      </h3>
+
+      <p>
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+        </span>
+
+        <span>
+          Segunda a Sexta 08:00<br />
+          até 22:00
+        </span>
+      </p>
+
+      <p>
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+        </span>
+
+        <span>
+          Sábado 09:00 às 18:00
+        </span>
+      </p>
+
+      <p>
+        <span class="footer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+        </span>
+
+        <span>
+          Domingos e feriados<br />
+          09:00 às 13:00
+        </span>
+      </p>
+
+
+      <!-- REDES SOCIAIS -->
+      <div class="footer-socials" aria-label="Redes sociais">
+
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com/megamtelecom/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram Megam Telecom"
+          title="Instagram"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1"></circle>
+          </svg>
+        </a>
+
+
+        <!-- Facebook -->
+        <a
+          href="https://www.facebook.com/megamtelecom/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook Megam Telecom"
+          title="Facebook"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 8h3V4h-3
+                     c-3.3 0-5 2-5 5v3H6v4h3v4h4v-4h3.5l.5-4H13V9
+                     c0-.7.3-1 1-1Z">
+            </path>
+          </svg>
+        </a>
+
+
+        <!-- YouTube -->
+        <a
+          href="https://www.youtube.com/@megamtelecom"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube Megam Telecom"
+          title="YouTube"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9
+                     C18 5 12 5 12 5s-6 0-7.7.3
+                     A2.7 2.7 0 0 0 2.4 7.2
+                     28 28 0 0 0 2 12
+                     a28 28 0 0 0 .4 4.8
+                     2.7 2.7 0 0 0 1.9 1.9
+                     C6 19 12 19 12 19s6 0 7.7-.3
+                     a2.7 2.7 0 0 0 1.9-1.9
+                     A28 28 0 0 0 22 12
+                     a28 28 0 0 0-.4-4.8Z">
+            </path>
+
+            <path d="m10 9 5 3-5 3V9Z"></path>
+          </svg>
+        </a>
+
       </div>
-    </footer>
+    </div>
+
+  </div>
+
+
+  <div class="container footer-bottom">
+    <p>
+      © <span id="year"></span> Megam Telecom.
+      Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
 
     <a class="whatsapp-float" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG)}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
       ${waIcon()}
@@ -206,8 +412,25 @@ function initShell() {
 
 /* ---------- REVEAL ON SCROLL ---------- */
 export function initReveal() {
-  const els = document.querySelectorAll('.reveal')
+  const els = document.querySelectorAll('.reveal:not([data-revealed])')
   if (!els.length) return
+
+  // Efeito cascata: elementos irmãos dentro do mesmo container aparecem
+  // em sequência, um pouco depois um do outro.
+  const groups = new Map()
+  els.forEach(el => {
+    el.setAttribute('data-revealed', '1')
+    const parent = el.parentElement
+    const list = groups.get(parent) || []
+    list.push(el)
+    groups.set(parent, list)
+  })
+  groups.forEach(list => {
+    list.forEach((el, i) => {
+      if (!el.style.transitionDelay) el.style.transitionDelay = `${Math.min(i, 7) * 90}ms`
+    })
+  })
+
   const obs = new IntersectionObserver((entries, o) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target) }

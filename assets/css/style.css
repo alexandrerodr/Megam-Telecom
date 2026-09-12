@@ -33,7 +33,7 @@
 
   --container: 1160px;
   --ease: cubic-bezier(.22,.61,.36,1);
-  --bounce: cubic-bezier(.34,1.56,.64,1);
+  --bounce: cubic-bezier(.33,1.15,.6,1);
 
   font-family: "Plus Jakarta Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -794,10 +794,10 @@ p { margin: 0; }
 }
 .cov-status.idle { background: var(--ink-50); color: var(--ink-400); border-color: var(--ink-100); }
 .cov-status.loading { background: var(--red-50); color: var(--red-600); }
-.cov-status.ok { background: #ecfdf5; color: #15803d; border-color: #bbf7d0; animation: popIn .4s var(--bounce); }
-.cov-status.fail { background: var(--red-50); color: var(--red-600); border-color: var(--red-200); animation: shake .4s; }
-@keyframes popIn { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.cov-status.ok { background: #ecfdf5; color: #15803d; border-color: #bbf7d0; animation: popIn .5s var(--bounce); }
+.cov-status.fail { background: var(--red-50); color: var(--red-600); border-color: var(--red-200); animation: shake .5s var(--ease); }
+@keyframes popIn { from { transform: scale(.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
 
 .cov-result { margin-top: 2rem; }
 .cov-result h4 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--ink-700); }
@@ -1547,3 +1547,134 @@ body * {
   -ms-user-select: none;
   user-select: none;
 }
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.4rem;
+}
+
+.footer-socials a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.footer-socials a svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-3px);
+  background: #e30613;
+  border-color: #e30613;
+  color: #fff;
+}
+
+.footer-socials a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* =====================================================
+   ANIMAÇÕES EXTRAS — entrada da página, hover e scroll
+   ===================================================== */
+
+/* --- Entrada da página (ao abrir o site) --- */
+@keyframes headerIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+.header { animation: headerIn .8s var(--ease) both; }
+
+@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+main.page { animation: pageFadeIn .6s ease both; }
+
+@keyframes logoPop { from { opacity: 0; transform: scale(.85) rotate(-4deg); } to { opacity: 1; transform: none; } }
+.brand-logo { animation: logoPop .7s .05s var(--ease) both; }
+
+/* --- Reveal: leve escala junto do fade, mais suave e um pouco mais lenta --- */
+.reveal { transform: translateY(22px) scale(.99); transition: opacity .85s var(--ease), transform .85s var(--ease); }
+.reveal.visible { transform: none; }
+
+/* --- Mais destaque ao passar o mouse (hovers suaves) --- */
+.faq-item { transition: border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease); }
+.faq-item:hover { border-color: var(--red-200); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+
+.ci-icon { transition: transform .45s var(--bounce), background .35s var(--ease); }
+.contact-list li:hover .ci-icon { transform: scale(1.1) rotate(-4deg); background: var(--red-100); }
+
+.eyebrow { transition: transform .35s var(--ease); }
+.eyebrow:hover { transform: translateY(-2px); }
+
+/* Sublinhado animado nos links do menu principal */
+.nav-link { position: relative; }
+.nav-link:not(.btn-central):not(.btn-assine)::after {
+  content: ""; position: absolute; left: 1rem; right: 1rem; bottom: 2px;
+  height: 2px; background: var(--red-500); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease);
+}
+.nav-link:not(.btn-central):not(.btn-assine):hover::after { transform: scaleX(1); }
+
+/* Zoom suave em imagens dentro de cartões clicáveis */
+.location-card img, .prize-img img { transition: transform .6s var(--ease); }
+
+/* Ícones sociais e de contato do rodapé com leve destaque ao passar o mouse */
+.footer-socials a:hover svg { transform: scale(1.1); transition: transform .35s var(--bounce); }
+.footer-contact-line { transition: color .3s var(--ease), transform .3s var(--ease); }
+.footer-contact-line:hover { transform: translateX(4px); }
+.footer-contact-line .footer-icon { transition: transform .4s var(--bounce); }
+.footer-contact-line:hover .footer-icon { transform: scale(1.12); }
+
+/* Botão de scroll-to-top com entrada suave */
+.scroll-top { transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .35s var(--ease), opacity .35s, visibility .35s; }
+.scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+/* Dicas do teste de velocidade deslizam suavemente ao passar o mouse */
+.speed-tips li { transition: transform .3s var(--ease), color .3s var(--ease); }
+.speed-tips li:hover { transform: translateX(5px); color: var(--ink-700); }
+
+/* Card de resultado de cobertura entra com leve destaque */
+.cov-result { animation: fadeUp .6s var(--ease) both; }
+
+/* Caixas de destaque da home (planos / cobertura / prêmios) ganham vida */
+.highlight-box { transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.highlight-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8px, 10px) scale(1.04); }
+}
+.highlight-box::before { animation: floatBlob 9s ease-in-out infinite; }
+.highlight-box::after { animation: floatBlob 11s ease-in-out infinite reverse; }
+
+/* Chips de filtro dos planos com leve elevação */
+.chip { transition: transform .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease), background .3s var(--ease); }
+
+/* Ícone do local (unidades) com leve giro ao passar o mouse */
+.location-icon { transition: transform .4s var(--bounce); }
+.location-card:hover .location-icon { transform: scale(1.1) rotate(-4deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .header, main.page, .brand-logo, .highlight-box::before, .highlight-box::after, .cov-result { animation: none !important; }
+}
+
+
+
+

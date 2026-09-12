@@ -1,10 +1,10 @@
-import { injectShell, faqs, $, $$ } from './layout.js'
+import { injectShell, faqs, $, $$, initReveal } from './layout.js'
 
 injectShell()
 
 const faqList = $('#faqList')
 faqList.innerHTML = faqs.map((f, i) => `
-  <div class="faq-item" id="faq-${i}">
+  <div class="faq-item reveal" id="faq-${i}">
     <button class="faq-q" aria-expanded="false" aria-controls="faq-a-${i}">
       <span>${f.q}</span>
       <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -12,6 +12,8 @@ faqList.innerHTML = faqs.map((f, i) => `
     <div class="faq-a" id="faq-a-${i}" role="region"><p>${f.a}</p></div>
   </div>
 `).join('')
+
+initReveal()
 
 faqList.addEventListener('click', (e) => {
   const btn = e.target.closest('.faq-q')

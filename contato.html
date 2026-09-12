@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fale com a Megam Telecom - tire dúvidas, peça suporte ou contrate seu plano." />
+  <meta name="description" content="Fale com a Megam Telecom - tire dúvidas, contrate seu plano ou seja nosso parceiro." />
   <title>Fale Conosco | Megam Telecom</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,9 +14,9 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
-  <meta property="og:image" content="assets/img/og_default.png">
+  <meta property="og:image" content="assets/img/og_default.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="assets/img/og_default.png">
+  <meta name="twitter:image" content="assets/img/og_default.jpg">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
         <span class="eyebrow">Fale Conosco</span>
         <h1>Vamos conversar</h1>
         <p>
-          Tire dúvidas, peça suporte ou fale com um consultor.
+          Tire dúvidas, contrate um plano ou seja nosso parceiro.
           Estamos prontos pra ajudar.
         </p>
 
@@ -116,7 +116,8 @@
     <select id="assunto" name="assunto" required>
       <option value="" disabled selected>Selecione</option>
       <option value="Contratar plano">Contratar plano</option>
-      <option value="Suporte técnico">Suporte técnico</option>
+      <option value="Trabalhe conosco">Trabalhe conosco</option>
+      <option value="Seja nosso parceiro">Seja nosso parceiro</option>
       <option value="2ª via de boleto">2ª via de boleto</option>
       <option value="Outros">Outros</option>
     </select>
@@ -126,6 +127,12 @@
   <div class="field">
     <label for="mensagem">Mensagem</label>
     <textarea id="mensagem" name="mensagem" rows="4" placeholder="Digite aqui"></textarea>
+  </div>
+
+  <!-- ANEXO -->
+  <div class="field">
+    <label for="anexo">Anexar arquivo <span style="font-weight:400;color:var(--ink-400)">(opcional)</span></label>
+    <input id="anexo" name="anexo" type="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
   </div>
 
   <!-- BOTÃO -->

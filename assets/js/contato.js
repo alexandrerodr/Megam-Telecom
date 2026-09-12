@@ -84,27 +84,19 @@ form.addEventListener('submit', function (event) {
   feedback.hidden = true
 
   // ===================================================
-  // ENVIO AJAX PARA O FORMSUBMIT
+  // ENVIO AJAX PARA O FORMSUBMIT (FormData p/ suportar anexo)
   // ===================================================
+
+  const formData = new FormData(form)
 
   fetch('https://formsubmit.co/ajax/gxstore0211@gmail.com', {
     method: 'POST',
 
     headers: {
-      'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
 
-    body: JSON.stringify({
-      nome: nome,
-      telefone: telefone,
-      assunto: assunto,
-      mensagem: mensagem,
-
-      _subject: 'Novo contato pelo site - Megam Telecom',
-      _template: 'table',
-      _captcha: 'false'
-    })
+    body: formData
   })
 
     .then(async response => {
